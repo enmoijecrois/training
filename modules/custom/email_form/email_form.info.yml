@@ -1,0 +1,5 @@
+name: email_form
+description: "Ajouter des formulaires à des nœuds"
+type: module
+core: 8.x
+version: 8.x-1.0

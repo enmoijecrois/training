@@ -1,0 +1,14 @@
+.drupal8__inner{
+	background:#333;
+	font-size:1.5em;
+	color:#999;
+	text-shadow:1px 1px 1px #000;
+	padding:1em 2em;
+}
+
+a.external-link:after{
+	content: url( ../images/external-link.gif);
+}
+
+
+

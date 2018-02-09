@@ -1,0 +1,11 @@
+/**
+ * @file
+ * Styles for Ive's highlighted component.
+ */
+
+.has-featured-top .region-highlighted {
+  background: #fff;
+}
+.region-highlighted {
+  margin: 0 15px;
+}

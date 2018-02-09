@@ -1,0 +1,10 @@
+permission_sessions:
+  title: 'Permission sessions'
+  description: 'Permission sessions access'
+  restrict access: 'true'
+
+permission_admin_color:
+  title: 'Permission admin color'
+  description: 'Permission admin access to manage colors'
+  restrict access: 'true'
+  

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function annonce_theme($existing, $type, $theme, $path) {
+  //var_dump($type);
+  return [
+   'page__annonce' => [
+      //'variables' => ['content' => NULL],
+      'template' => 'page--annonce',
+    ],
+  ];
+}
+
+/*
+function annonce_preprocess_page(&$variables){
+    $route = \Drupal::routeMatch()->getRouteName();
+    //var_dump($route);
+    var_dump($variables['content']);
+    //$variables['content']
+}
+*/
+

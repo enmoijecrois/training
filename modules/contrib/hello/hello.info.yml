@@ -1,0 +1,5 @@
+type: module
+name: Hello
+description: 'Says "Hello".'
+version: 8.x-1.01
+core: '8.x'

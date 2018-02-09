@@ -1,0 +1,44 @@
+#sidebar-first .region-sidebar-first .orange-class{
+    border: 1px solid #FFB600;
+    border-radius: 10px;
+    color: #FFB600;
+}
+#sidebar-first .region-sidebar-first .orange-class h2{
+    border-bottom: 1px solid #FFB600;
+    color: #FFB600;
+    font-weight: bold;
+}
+.orange-class .color_user, .orange-class label {
+    color: #FFB600;
+    font-weight: bold;
+}
+
+#sidebar-first .region-sidebar-first .blue-class{
+    border: 1px solid #0071b3;
+    border-radius: 10px;
+    color: #0071b3;
+}
+#sidebar-first .region-sidebar-first .blue-class h2{
+    border-bottom: 1px solid #0071b3;
+    color: #0071b3;
+    font-weight: bold;
+}
+.blue-class .color_user, .blue-class label{
+    color: #0071b3;
+    font-weight: bold;
+}
+
+#sidebar-first .region-sidebar-first .green-class{
+    border: 1px solid #77B259;
+    border-radius: 10px;
+    color: #77B259;
+}
+#sidebar-first .region-sidebar-first .green-class h2{
+    border-bottom: 1px solid #77B259;
+    color: #77B259;
+    font-weight: bold;
+}
+.green-class .color_user, .green-class label{
+    color: #77B259;
+    font-weight: bold;
+}

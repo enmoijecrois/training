@@ -1,0 +1,14 @@
+{% block drupal8 %}
+  <div{{ content_attributes.addClass('drupal8') }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}><img src="/themes/ive/images/drupal8.png" alt=""></h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    <div{{ content_attributes.addClass('content') }}>
+      {{ content }}
+    </div>
+  {% endblock %}
+  </div>
+{% endblock %}

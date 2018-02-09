@@ -1,0 +1,109 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_help().
+ */
+function hello_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the block module.
+    case 'help.page.hello':
+      return '<p>' . t('Here is an helpful page with a link to the <a href=":blocks">blocks administration page</a>.', [':blocks' => \Drupal::url('block.admin_display')]) . '</p>';
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function hello_cron() {
+  drupal_set_message(t('CronJob soon available.'), 'error');
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function hello_user_login($account) {
+  //kint($account);
+  if ($account->isAuthenticated()){
+  	drupal_set_message('Welcome back '.$account->getUsername().'!');
+  }
+}
+
+// insertion dans la table à chaque mise à jour d'un noeud
+function hello_entity_update(EntityInterface $entity) {
+  //kint($entity);
+  $entity_type = $entity->getEntityTypeId();
+  if ($entity_type == 'node') {
+    $database = \Drupal::database();
+    $user = \Drupal::currentUser();
+    $uid = $user->id();
+    $nid = $entity->id();
+
+    $database->insert('hello_node_history')->fields(
+      [
+        'nid' => $nid,
+        'update_time' => time(),
+        'uid' => $uid,
+      ]
+    )->execute();
+  }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+/*
+function hello_theme() {
+  return [
+   'hello_block' => [
+      'variables' => ['title' => NULL, 'link' => NULL],
+      'template' => 'block--hello',
+    ],
+  ];
+}
+*/
+
+function hello_preprocess_block(array &$variables) {
+  $color = \Drupal::config('hello.config')->get('color');
+  $variables['attributes']['class'][] = $color;
+}
+
+
+
+function hello_page_attachments(array &$page){
+  $page['#attached']['library'][] = 'hello/base';
+}
+
+function hello_theme($existing, $type, $theme, $path) {
+  return [
+    'hello_node_history' => [
+      'template' => 'hello-node-history',
+      'variables' => array('node' => NULL, 'count' => NULL),
+    ]
+  ];
+}
+
+function hello_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id) {
+  if ($form_id == 'contact_message_feedback_form') {
+    $form['field_phone'] = [
+      '#type' => 'number',
+      '#title' => t('Phone'),
+      '#weight' =>'-1',
+    ];
+    $form['subject']['#access'] = FALSE;
+    $form['actions']['submit']['#value'] = t('Send message now');
+    //kint($form);
+  }
+}
+
+
+
+
